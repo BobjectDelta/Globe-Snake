@@ -38,8 +38,7 @@ public class SurfaceSpawner : MonoBehaviour
             }
 
             Bonus bonus = bonuses[Random.Range(0, bonuses.Count)];
-            Collider bonusCollider = bonus.GetComponent<Collider>();
-            float bonusCheckRadius = bonusCollider.bounds.size.magnitude * 5;
+            float bonusCheckRadius = bonus.transform.lossyScale.x * 2;
 
             Vector3 spawnPosition = Vector3.zero;
             bool canSpawn = false;
@@ -50,7 +49,6 @@ public class SurfaceSpawner : MonoBehaviour
                 attempts++;
                 Vector3 randomSurfacePoint = Random.onUnitSphere * (_surfaceObjectRadius + _heightOffset * bonus.transform.lossyScale.z);
                 spawnPosition = _surfaceObjectTransform.position + randomSurfacePoint;
-
                 if (!Physics.CheckSphere(spawnPosition, bonusCheckRadius, _obstructionLayers))               
                     canSpawn = true;         
                 else

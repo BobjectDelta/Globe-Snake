@@ -9,6 +9,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _pauseButton;
     [SerializeField] public GameObject _healthCounter;
     [SerializeField] private GameObject _scoreCounter;
+    [SerializeField] private GameObject _goalScore;
+    [SerializeField] private GameObject _compass;
     [SerializeField] private GameObject _pauseMenu;
     [SerializeField] private GameObject _winMenu;
     [SerializeField] private GameObject _gameOverMenu;
@@ -32,6 +34,11 @@ public class UIManager : MonoBehaviour
     public void UpdateScoreCounter(int score)
     {
         _scoreCounter.GetComponent<TextMeshProUGUI>().text = score.ToString();
+    }
+
+    public void UpdateGoalScoreText(int goalScore)
+    {
+        _goalScore.GetComponent<TextMeshProUGUI>().text = goalScore.ToString();
     }
 
     public void DisplayPauseUI(bool toPause)
@@ -60,6 +67,8 @@ public class UIManager : MonoBehaviour
         //_healthBar.SetActive(active);
         _healthCounter.SetActive(active);
         _scoreCounter.SetActive(active);
+        _goalScore.SetActive(active);
+        _compass.SetActive(active);
     }
 
     public void SetActiveMenuElements(bool active)

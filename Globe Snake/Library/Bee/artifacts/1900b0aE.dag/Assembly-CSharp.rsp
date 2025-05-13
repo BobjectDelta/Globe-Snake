@@ -378,6 +378,7 @@
 "Assets/Scripts/Player/InputSystem/PlayerControls.cs"
 "Assets/Scripts/Player/PlayerMovementController.cs"
 "Assets/Scripts/Player/SnakeBodyController.cs"
+"Assets/Scripts/ProceduralGeneration/LevelGenerator.cs"
 "Assets/Scripts/UI/FoodCompass.cs"
 "Assets/Scripts/UI/UIManager.cs"
 -langversion:9.0

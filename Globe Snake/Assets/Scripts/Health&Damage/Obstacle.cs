@@ -29,7 +29,7 @@ public class Obstacle : MonoBehaviour
             {
                 playerHealth.TakeDamage(_damageAmount);
                 // Debug.Log($"{gameObject.name} (Obstacle) attempting to damage {potentialRecipient.gameObject.name}.");
-                if (_shouldTeleportPlayer)               
+                if (_shouldTeleportPlayer && playerHealth.GetHealth() > 0)               
                     if (GameManager.gameManagerInstance != null)                   
                         potentialRecipient.transform.position = GameManager.gameManagerInstance.GetPlayerSpawnPoint().position;
                     else

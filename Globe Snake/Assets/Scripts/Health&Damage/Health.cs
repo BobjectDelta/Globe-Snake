@@ -100,6 +100,11 @@ public class Health : MonoBehaviour, IDamageable
         return _maxHealth;
     }
 
+    public void SetMaxHealth(float maxHealth)
+    {
+        _maxHealth = maxHealth;
+    }
+
     public bool GetIsInvincible()
     {
         return _isInvincible;

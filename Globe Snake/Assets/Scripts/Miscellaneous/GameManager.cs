@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float _scorePerTick = 10f;
     [SerializeField] private float _scoreTickInterval = 1000f;
 
-
     private int _currentScore = 0;
     private float _scoreTimer = 0f;
     private float _bonusScoreMultiplier = 1f;
@@ -42,6 +41,7 @@ public class GameManager : MonoBehaviour
         _uiManager.SetActiveMenuElements(false);
         _uiManager.SetActiveGameElements(true);
         _uiManager.UpdateScoreCounter(_currentScore);
+        _uiManager.UpdateGoalScoreText(_scoreGoal);
         _uiManager.UpdateHealthCounter(player.GetComponent<Health>().GetHealth());
     }
 
@@ -75,6 +75,24 @@ public class GameManager : MonoBehaviour
     {
         _bonusScoreMultiplier *= multiplier;
         Debug.Log($"Bonus score multiplier applied: {multiplier}");
+    }
+
+    public void SetGoalScore(float goalScore)
+    {
+        if (goalScore > 0)
+            _scoreGoal = Mathf.CeilToInt(goalScore);
+        else
+            Debug.LogWarning("Attempted to set a non-positive score goal.");
+        if (_uiManager)
+            _uiManager.UpdateGoalScoreText(_scoreGoal);
+    }
+
+    public void SetPlayerSpawnPoint(Transform spawnPoint)
+    {
+        if (spawnPoint != null)
+            _playerSpawnPoint = spawnPoint;
+        else
+            Debug.LogWarning("Attempted to set a null player spawn point.");
     }
 
     public Transform GetPlayerSpawnPoint()
