@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class Health : MonoBehaviour, IDamageable
@@ -15,25 +12,19 @@ public class Health : MonoBehaviour, IDamageable
     {
         if (_health > _maxHealth)
             _health = _maxHealth;
-        //Debug.Log($"Is UIManager instance null? {UIManager.uiManagerInstance == null}");
-        //Debug.Log($"Is _healthCounter GameObject null in UIManager? {UIManager.uiManagerInstance._healthCounter == null}");
-        //Debug.Log($"Is TextMeshPro component null on _healthCounter? {UIManager.uiManagerInstance._healthCounter.GetComponent<TextMeshProUGUI>() == null}");
 
-        //if (gameObject.CompareTag("Player"))// && UIManagement.uiManagerInstance) //&& GameManagement.gameManagerInstance != null)
-        //    UIManager.uiManagerInstance._healthCounter.GetComponent<TextMeshProUGUI>().text = Mathf.CeilToInt(_health).ToString();
-
+        _isInvincible = true;
+        _invincibilityTimeCounter = Time.time + _invincibilityTime;
     }
 
     private void Update()
     {
-        if (_isInvincible)
-        {
+        if (_isInvincible)       
             if (Time.time > _invincibilityTimeCounter)
             {
                 _isInvincible = false;
                 Debug.Log("Invincibility ended");
-            }
-        }
+            }        
     }
 
     public void TakeDamage(float damage)
@@ -43,7 +34,7 @@ public class Health : MonoBehaviour, IDamageable
             _health -= damage;
             Debug.Log("Damage taken: " + damage);
             if (gameObject.CompareTag("Player"))
-                UIManager.uiManagerInstance.UpdateHealthCounter(_health);
+                UIManager.uiManagerInstance._healthBar.GetComponent<HealthBarManager>().SetCurrentValue(_health);
 
             if (_health <= 0)
             {
@@ -82,10 +73,10 @@ public class Health : MonoBehaviour, IDamageable
         _health += healAmount;
         if (_health > _maxHealth)
             _health = _maxHealth;
-        //if (gameObject.CompareTag("Player") && GameManagement.gameManagerInstance != null)
-        //    UIManagement.uiManagerInstance._healthBar.GetComponent<HealthBar>().SetCurrentValue(_health);
-        if (gameObject.CompareTag("Player")) //&& GameManagement.gameManagerInstance != null)
-            UIManager.uiManagerInstance.UpdateHealthCounter(_health);
+        if (gameObject.CompareTag("Player") && GameManager.gameManagerInstance != null)
+            UIManager.uiManagerInstance._healthBar.GetComponent<HealthBarManager>().SetCurrentValue(_health);
+        //if (gameObject.CompareTag("Player")) 
+        //    UIManager.uiManagerInstance.UpdateHealthCounter(_health);
 
         Debug.Log("Healed to: " + _health);
     }

@@ -46,11 +46,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _surfaceObjectTransform: {fileID: 0}
   bonuses:
-  - {fileID: -4288211950626415720, guid: ca223ced37a837249b30feb716be6b00, type: 3}
+  - {fileID: 3441630846735437355, guid: fad8013a7556ebc4480cb226b0db4aa1, type: 3}
   _bonusHolder: {fileID: 0}
-  _spawnInterval: 1
-  _heightOffset: 0.5
-  _maxActiveBonuses: 50
+  _spawnInterval: 3
+  _heightOffset: 2
+  _maxActiveBonuses: 15
   _obstructionLayers:
     serializedVersion: 2
     m_Bits: 72

@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Bonus" Collapsed="true">
+    <Position X="7.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASAAACCQCAAAAAAAAAAAAAIAAAAAAAAQAABAIAAAKA=</HashCode>
+      <FileName>Assets\Scripts\Bonuses\Bonus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Food" Collapsed="true">
+    <Position X="3.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Bonuses\Variations\Food.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HealthBonus" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAIAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Bonuses\Variations\HealthBonus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ScoreBonus" Collapsed="true">
+    <Position X="5.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Bonuses\Variations\ScoreBonus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ScoreMultiplierBonus" Collapsed="true">
+    <Position X="9" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAACAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Bonuses\Variations\ScoreMultiplierBonus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpeedBonus" Collapsed="true">
+    <Position X="11" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAACAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Bonuses\Variations\SpeedBonus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GravitationalAttraction" Collapsed="true">
+    <Position X="9.5" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Gravity\GravitationalAttraction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GravitationalBody" Collapsed="true">
+    <Position X="11.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAiAAAAAAAQAAAAAAAAEAAAAAAAgAACAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Gravity\GravitationalBody.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Health" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="6" Width="1.5" />
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" ManuallyRouted="true" FixedToPoint="true">
+      <Path>
+        <Point X="8.75" Y="5.812" />
+        <Point X="12.438" Y="5.812" />
+        <Point X="12.438" Y="6" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AgQCAAAAACEAAAKgAAAAABAAAAAAAAACAAAAgCAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Health&amp;Damage\Health.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="1.228" Collapsed="true" />
+  </Class>
+  <Class Name="Obstacle" Collapsed="true">
+    <Position X="10.5" Y="6" Width="1.5" />
+    <InheritanceLine Type="UnityEngine.MonoBehaviour" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8.75" Y="5.812" />
+        <Point X="11.312" Y="5.812" />
+        <Point X="11.312" Y="6" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAIBAAAAEAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Health&amp;Damage\Obstacle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vector3Data" Collapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAABgAQAAAAA=</HashCode>
+      <FileName>Assets\Scripts\LevelEditor\LevelData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuaternionData" Collapsed="true">
+    <Position X="2.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAhgAQAAAAA=</HashCode>
+      <FileName>Assets\Scripts\LevelEditor\LevelData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpawnPointData" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\LevelEditor\LevelData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObstacleData" Collapsed="true">
+    <Position X="2.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAACAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\LevelEditor\LevelData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LevelData" Collapsed="true">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAACAAAQAAAAAAAAAAAAAAJAAAA=</HashCode>
+      <FileName>Assets\Scripts\LevelEditor\LevelData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LevelEditorController" Collapsed="true">
+    <Position X="5.75" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>gAQAEAAACjAAEAAABEgGAAACABAKAAIAAEBAgAYBAEE=</HashCode>
+      <FileName>Assets\Scripts\LevelEditor\LevelEditorController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ObstacleButton" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\LevelEditor\ObstacleButton.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SaveSlotButton" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAEgAAAABAAAAAAAAAQABAAAAAAAAgAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\LevelEditor\SaveSlotButton.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="GameManager" Collapsed="true">
+    <Position X="4.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gEypAAIAAMAACEACAggIAABAAAEDwgABAAAAAAgiYEQ=</HashCode>
+      <FileName>Assets\Scripts\Miscellaneous\GameManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LevelManager" Collapsed="true">
+    <Position X="1" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACABEAAASAIAgAAAAAAACAEAAAAAAAIAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Miscellaneous\LevelManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LevelSelectButton" Collapsed="true">
+    <Position X="0.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQEAAAAAAAAAAgAAAAAAQIAAAAAAAAIAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Miscellaneous\LevelSelectButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SurfaceSpawner" Collapsed="true">
+    <Position X="7.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQQQAAMACAAAAAAAIAQBAAAAAAEAAAAAAABAAIAAAA=</HashCode>
+      <FileName>Assets\Scripts\Miscellaneous\SurfaceSpawner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="@PlayerControls" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12" Y="8.75" Width="1.5" />
+    <NestedTypes>
+      <Struct Name="@PlayerControls.PlayerActions" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\Player\InputSystem\PlayerControls.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="@PlayerControls.UIActions" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\Player\InputSystem\PlayerControls.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Interface Name="@PlayerControls.IPlayerActions" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\Player\InputSystem\PlayerControls.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Interface>
+      <Interface Name="@PlayerControls.IUIActions" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\Player\InputSystem\PlayerControls.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Interface>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AIACAAAAACAAABAgAAKECRAJYAIXBGAUAGEgIFhQAMA=</HashCode>
+      <FileName>Assets\Scripts\Player\InputSystem\PlayerControls.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Left" Position="0.1" Collapsed="true" />
+  </Class>
+  <Class Name="PlayerMovementController" Collapsed="true">
+    <Position X="12" Y="7.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAgACAAABAAAAQABAAkABAIAIAAAAAAAACEA=</HashCode>
+      <FileName>Assets\Scripts\Player\PlayerMovementController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SnakeBodyController" Collapsed="true">
+    <Position X="8.25" Y="7.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>ABAIgAABIjAAAIQAAAAAAAAAIAAAAAAAAAEBAAAAAkA=</HashCode>
+      <FileName>Assets\Scripts\Player\SnakeBodyController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LevelGenerator" Collapsed="true">
+    <Position X="5.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAGAAAlAAAEACIAAgCAAAAAAAAAAAACEAAgAIBQME=</HashCode>
+      <FileName>Assets\Scripts\ProceduralGeneration\LevelGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FoodCompass" Collapsed="true">
+    <Position X="10.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAACAAAAAgAAAAAAIgBAAAQAAA=</HashCode>
+      <FileName>Assets\Scripts\UI\FoodCompass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UIManager" Collapsed="true">
+    <Position X="2.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAQAIIAAAAAAAAAIAAAAAAQAFAgAAEAAAIABAACAOQ=</HashCode>
+      <FileName>Assets\Scripts\UI\UIManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnityEngine.MonoBehaviour" Collapsed="true">
+    <Position X="7.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Struct Name="PrefabNameMapping" Collapsed="true">
+    <Position X="2.25" Y="5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\LevelEditor\LevelData.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Interface Name="IDamageable" Collapsed="true">
+    <Position X="12.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Health&amp;Damage\IDamageable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

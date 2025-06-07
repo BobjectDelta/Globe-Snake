@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 1215684634071886763}
   - component: {fileID: 1605766935296682715}
   - component: {fileID: 9043509591744360487}
-  - component: {fileID: 8250211913086428000}
   - component: {fileID: 8377427795381735190}
+  - component: {fileID: 5355618842956150886}
   m_Layer: 3
   m_Name: rock_m
   m_TagString: Untagged
@@ -85,8 +85,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8250211913086428000
-BoxCollider:
+--- !u!114 &8377427795381735190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808728563883951426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7cd93b6cebb25f43befcb7ac576dd57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damageAmount: 1
+  _shouldTeleportPlayer: 1
+--- !u!64 &5355618842956150886
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -103,20 +117,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.667655, y: 2.1117318, z: 1.6446719}
-  m_Center: {x: 0.0047454834, y: 0.85586596, z: -0.005260974}
---- !u!114 &8377427795381735190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 808728563883951426}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7cd93b6cebb25f43befcb7ac576dd57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damageAmount: 2
-  _shouldTeleportPlayer: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 644255a0198675a44828611a93cd87d9, type: 3}

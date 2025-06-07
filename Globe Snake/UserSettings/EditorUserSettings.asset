@@ -15,13 +15,25 @@ EditorUserSettings:
       value: 0254055556575b0309085d27157a0b44154e1d787c2b716928781b63b3b4366b
       flags: 0
     RecentlyUsedSceneGuid-3:
-      value: 5a5757560101590a5d0c0e24427b5d44434e4c7a7b7a23677f2b4565b7b5353a
+      value: 07535752540d5e0c545b5d2345220c44174f4b7e7b2e273674704d65bab2316e
       flags: 0
     RecentlyUsedSceneGuid-4:
+      value: 5a5251575751505d0e5b0e7644205a444215417e742e7062797a4d63b4b1653c
+      flags: 0
+    RecentlyUsedSceneGuid-5:
       value: 0057025f51545c09080f0e2044715a4447164073797f76342e2b1f31e7e1646f
+      flags: 0
+    RecentlyUsedSceneGuid-6:
+      value: 5708075e5c500c030f0a087013265a4412151979782e77682c7b4e32e0b4373a
+      flags: 0
+    RecentlyUsedSceneGuid-7:
+      value: 5a5757560101590a5d0c0e24427b5d44434e4c7a7b7a23677f2b4565b7b5353a
       flags: 0
     UnityRemoteDevice:
       value: 225f4d46245b0d4902070862342649191512
+      flags: 0
+    UnityRemoteJoystickSource:
+      value: 315459091150
       flags: 0
     vcSharedLogLevel:
       value: 0d5e400f0650

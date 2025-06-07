@@ -1,11 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SurfaceSpawner : MonoBehaviour
 {
     [SerializeField] private Transform _surfaceObjectTransform;
-    [SerializeField] private List<Bonus> bonuses = new List<Bonus>();
+    [SerializeField] private List<GameObject> bonuses = new List<GameObject>();
     [SerializeField] private Transform _bonusHolder;
     [SerializeField] private float _spawnInterval = 3f;
     [SerializeField] private float _heightOffset = 0.5f;
@@ -37,8 +36,8 @@ public class SurfaceSpawner : MonoBehaviour
                 return; 
             }
 
-            Bonus bonus = bonuses[Random.Range(0, bonuses.Count)];
-            float bonusCheckRadius = bonus.transform.lossyScale.x * 2;
+            GameObject bonusPrefab = bonuses[Random.Range(0, bonuses.Count)];
+            float bonusCheckRadius = bonusPrefab.transform.lossyScale.x * 2;
 
             Vector3 spawnPosition = Vector3.zero;
             bool canSpawn = false;
@@ -47,7 +46,7 @@ public class SurfaceSpawner : MonoBehaviour
             while (!canSpawn && attempts < _maxSpawnAttempts)
             {
                 attempts++;
-                Vector3 randomSurfacePoint = Random.onUnitSphere * (_surfaceObjectRadius + _heightOffset * bonus.transform.lossyScale.z);
+                Vector3 randomSurfacePoint = Random.onUnitSphere * (_surfaceObjectRadius + _heightOffset * bonusPrefab.transform.lossyScale.z);
                 spawnPosition = _surfaceObjectTransform.position + randomSurfacePoint;
                 if (!Physics.CheckSphere(spawnPosition, bonusCheckRadius, _obstructionLayers))               
                     canSpawn = true;         
@@ -57,14 +56,15 @@ public class SurfaceSpawner : MonoBehaviour
 
             if (canSpawn)
             {
-                GameObject bonusPrefab = Instantiate(bonus.gameObject, spawnPosition, Quaternion.identity);
-                bonusPrefab.transform.SetParent(_bonusHolder);
+                Vector3 normal = (spawnPosition - _surfaceObjectTransform.position).normalized;
+                Quaternion spawnRotation = Quaternion.FromToRotation(Vector3.up, normal);
+                GameObject bonus = Instantiate(bonusPrefab, spawnPosition, spawnRotation);
+                bonus.transform.SetParent(_bonusHolder);
             }
             else           
                 Debug.Log("Bonus not spawned, collision detected");
 
-            _spawnTimer = Time.time + _spawnInterval;
-                
+            _spawnTimer = Time.time + _spawnInterval;               
         }
     }
 }

@@ -21,10 +21,8 @@ public class LevelGenerator : MonoBehaviour
 
     void Awake()
     {
-        if (_planetTransform == null)
-            Debug.LogError("Planet Transform is not assigned in LevelGenerator!", this);
         if (_obstaclePrefabs == null || _obstaclePrefabs.Count == 0)
-            Debug.LogError("No Obstacle Prefabs assigned in LevelGenerator!", this);
+            Debug.LogError("No Obstacle Prefabs assigned in LevelGenerator", this);
 
         _planetCenter = _planetTransform.position;
         _planetRadius = _planetTransform.lossyScale.x / 2f;
@@ -37,18 +35,25 @@ public class LevelGenerator : MonoBehaviour
         }
 
         GenerateLevel();
-        SetLevelParameters(1, 5);
+    }
+
+    private void Start()
+    {
+        GameManager gameManager = GameManager.gameManagerInstance;
+        if (gameManager != null)
+            gameManager.SetPlayerSpawnPoint(GeneratedPlayerSpawnPoint.position);
+        else
+            Debug.LogWarning("GameManager instance not found or null, cannot assign player spawn point", this);
+
+        SetLevelParameters(2, 5);
     }
 
     void GenerateLevel()
     {
-        Debug.Log("Starting level generation...");
-
         PlacePlayerSpawnPoint();      
-        if (_obstaclePrefabs != null && _obstaclePrefabs.Count > 0)       
-            PlaceObstacles();
+        PlaceObstacles();
         
-        Debug.Log($"Level generation finished. Placed {GetPlacedObstacleCount()} obstacles and 1 spawn point.");
+        Debug.Log($"Level generation finished. Placed {GetPlacedObstacleCount()} obstacles and a spawn point");
     }
 
     private void PlacePlayerSpawnPoint()
@@ -63,13 +68,7 @@ public class LevelGenerator : MonoBehaviour
         spawnPointGO.transform.SetParent(_generatedObjectsHolder); 
 
         GeneratedPlayerSpawnPoint = spawnPointGO.transform; 
-        Debug.Log($"Placed Player Spawn Point at {spawnPosition}.");
-
-        GameManager gameManager = GameManager.gameManagerInstance;
-        if (gameManager != null)               
-            gameManager.SetPlayerSpawnPoint(GeneratedPlayerSpawnPoint);        
-        else        
-            Debug.LogWarning("GameManager instance not found or null. Cannot assign player spawn point.", this); 
+        Debug.Log($"Placed Player Spawn Point at {spawnPosition}");
     }
 
     private void PlaceObstacles()
@@ -77,7 +76,7 @@ public class LevelGenerator : MonoBehaviour
         for (int i = 0; i < _obstacleCount; i++)
         {
             GameObject randomObstaclePrefab = _obstaclePrefabs[Random.Range(0, _obstaclePrefabs.Count)];
-            bool successfullyPlaced = TryPlaceObject(randomObstaclePrefab);       
+            TryPlaceObject(randomObstaclePrefab);          
         }
     }
 
@@ -85,10 +84,11 @@ public class LevelGenerator : MonoBehaviour
     {
         Collider prefabCollider = objectPrefab.GetComponent<Collider>();
         float obstacleCheckRadius = 1f; 
+
         if (prefabCollider != null)       
             obstacleCheckRadius = objectPrefab.transform.lossyScale.magnitude / 2;      
         else       
-            Debug.LogWarning($"Obstacle prefab '{objectPrefab.name}' is missing a Collider. Using default check radius ({obstacleCheckRadius}).", objectPrefab);
+            Debug.LogWarning($"Obstacle prefab '{objectPrefab.name}' is missing a Collider. Using default check radius ({obstacleCheckRadius})", objectPrefab);
 
         int attempts = 0;
         while (attempts < _maxPlacementAttempts)
@@ -119,7 +119,7 @@ public class LevelGenerator : MonoBehaviour
             attempts++;
         }
 
-        Debug.LogWarning($"Failed to place object {objectPrefab.name} after {_maxPlacementAttempts} attempts.", this);
+        Debug.LogWarning($"Failed to place object {objectPrefab.name} after {_maxPlacementAttempts} attempts", this);
         return false; 
     }
 
@@ -129,6 +129,7 @@ public class LevelGenerator : MonoBehaviour
         if (gameManager != null)
         {
             gameManager.player.GetComponent<Health>().SetMaxHealth(Random.Range(minHealth, maxHealth+1));
+            gameManager.player.GetComponent<Health>().Heal(gameManager.player.GetComponent<Health>().GetMaxHealth());
             gameManager.SetGoalScore(Random.Range(10, 300) * 100);
         }
     }

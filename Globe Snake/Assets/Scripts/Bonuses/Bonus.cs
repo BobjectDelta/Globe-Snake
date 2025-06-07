@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bonus : MonoBehaviour
@@ -11,6 +9,8 @@ public class Bonus : MonoBehaviour
 
     [SerializeField] protected bool _isTimed = false;
     [SerializeField] protected bool _isOverTime = false;
+    [SerializeField] protected GameObject _soundEffect;
+    [SerializeField] protected GameObject _visualEffect;
 
     private bool _isBuffed;
 
@@ -46,11 +46,31 @@ public class Bonus : MonoBehaviour
             else
                 _remainingEffectTime = _effectTime;
 
+            if (_visualEffect != null)
+                Instantiate(_visualEffect, transform.position, Quaternion.identity);
+            if (_soundEffect != null)
+                Instantiate(_soundEffect, transform.position, Quaternion.identity);
+
             Debug.Log("Remaining effect time: " + _remainingEffectTime);
-            gameObject.GetComponent<Collider>().enabled = false;
-            gameObject.GetComponent<MeshRenderer>().enabled = false;
+
+            DisableVisualsAndCollider();
             Destroy(gameObject, _effectTime + 0.01f);
         }
+    }
+
+    private void DisableVisualsAndCollider()
+    {
+        Collider mainCollider = GetComponent<Collider>();
+        if (mainCollider != null)       
+            mainCollider.enabled = false;
+        
+        MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
+        foreach (MeshRenderer renderer in renderers)       
+            renderer.enabled = false;     
+
+        Light[] lights = GetComponentsInChildren<Light>();
+        foreach (Light light in lights)       
+            light.enabled = false;       
     }
 
     protected virtual void GrantBonus(GameObject bonusRecipient) { }

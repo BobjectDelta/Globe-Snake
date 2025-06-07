@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6220918533453412811}
   - component: {fileID: 145639937541603225}
   - component: {fileID: 1823730899958890324}
+  - component: {fileID: 6489204965917085533}
   m_Layer: 3
   m_Name: rock_i
   m_TagString: Untagged
@@ -102,7 +103,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 0.90391994, y: 2.240516, z: 1.05618}
   m_Center: {x: 0.011047006, y: 0.9202579, z: 0.002620995}
@@ -118,5 +119,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7cd93b6cebb25f43befcb7ac576dd57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageAmount: 2
+  _damageAmount: 1
   _shouldTeleportPlayer: 1
+--- !u!64 &6489204965917085533
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736680531088881856}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 6ad2835734317d446b4fdcf875dbd656, type: 3}
