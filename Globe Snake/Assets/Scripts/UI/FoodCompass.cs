@@ -1,7 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic; 
-using TMPro; 
-using UnityEngine.UI; 
 
 public class FoodCompass : MonoBehaviour
 {
@@ -15,18 +12,8 @@ public class FoodCompass : MonoBehaviour
 
     private Food _nearestFood = null; 
 
-
     void Start()
-    {
-        if (_player == null) 
-            Debug.LogError("Player Head Transform not assigned to FoodCompass!", this);
-        if (_bonusHolder == null) 
-            Debug.LogError("Bonus Holder Transform not assigned to FoodCompass!", this);
-        if (_compassArrow == null) 
-            Debug.LogError("Compass Arrow RectTransform not assigned to FoodCompass!", this);
-        if (_idleCompass == null)
-            Debug.LogError("Idle Compass RectTransform not assigned to FoodCompass!", this);
-
+    {      
         if (_compassArrow != null)
             _compassArrow.gameObject.SetActive(false); 
         if (_idleCompass != null)
@@ -54,10 +41,10 @@ public class FoodCompass : MonoBehaviour
                 _idleCompass.gameObject.SetActive(true);
                 return;
             }
-
+            
             Vector3 foodDirection = _nearestFood.transform.position - _player.position;
             Vector3 localFoodDirection = _player.InverseTransformDirection(foodDirection);
-            Vector3 flatLocalDirection = new Vector3(localFoodDirection.x, 0, localFoodDirection.z);
+            Vector3 flatLocalDirection = new Vector3(localFoodDirection.x, 0, localFoodDirection.z); 
 
             if (flatLocalDirection.sqrMagnitude < 0.0001f)            
                 _compassArrow.localEulerAngles = new Vector3(0, 0, 0);                          

@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class SnakeBodyController : MonoBehaviour
@@ -62,7 +60,7 @@ public class SnakeBodyController : MonoBehaviour
             _lastRecordPosition = curHeadPosition; 
             _lastRecordDirection = curHeadDirection;
         }
-        else if (pathHistory.Count == 0)
+        else if (pathHistory.Count == 0) 
         {
             pathHistory.Add(curHeadPosition);
             _lastRecordPosition = curHeadPosition;
@@ -89,16 +87,13 @@ public class SnakeBodyController : MonoBehaviour
         if (pathHistory.Count > 0 && pointsToKeep < 1) 
             pointsToKeep = 1; 
 
-        if (pathHistory.Count > pointsToKeep)
-        {
+        if (pathHistory.Count > pointsToKeep)       
             pathHistory.RemoveRange(pointsToKeep, pathHistory.Count - pointsToKeep);
-        }
-        //Debug.Log($"History points kept: {pathHistory.Count} (target: {pointsToKeep})");
+        
 
         for (int i = 0; i < segmentTransforms.Count; i++)
         {
             float targetDistance = (i + 1) * _segmentLength;
-
             Vector3 targetPosition = FindPointOnPath(targetDistance);
 
             if (targetPosition != Vector3.zero)
@@ -109,10 +104,8 @@ public class SnakeBodyController : MonoBehaviour
                 if (lookAheadPoint != Vector3.zero && lookAheadPoint != segmentTransforms[i].position)
                 {
                     Vector3 lookDirection = lookAheadPoint - segmentTransforms[i].position;
-                    if (lookDirection != Vector3.zero && lookDirection.sqrMagnitude > 0.0001f) 
-                    {
-                        segmentTransforms[i].rotation = Quaternion.LookRotation(lookDirection, Vector3.up);
-                    }
+                    if (lookDirection != Vector3.zero && lookDirection.sqrMagnitude > 0.0001f)                     
+                        segmentTransforms[i].rotation = Quaternion.LookRotation(lookDirection, Vector3.up);                   
                 }
             }
             
@@ -149,7 +142,6 @@ public class SnakeBodyController : MonoBehaviour
     public void AddSegment()
     {        
         float spawnDistance = (segmentTransforms.Count + 1) * _segmentLength;
-
         Vector3 spawnPosition = FindPointOnPath(spawnDistance);
 
         if (spawnPosition == Vector3.zero)
@@ -160,8 +152,8 @@ public class SnakeBodyController : MonoBehaviour
                 spawnPosition = _headTransform.position;         
         }
 
-        GameObject newSegmentGO = Instantiate(_bodySegmentPrefab, spawnPosition, Quaternion.identity);
-        segmentTransforms.Add(newSegmentGO.transform);
+        GameObject newSegment = Instantiate(_bodySegmentPrefab, spawnPosition, Quaternion.identity);
+        segmentTransforms.Add(newSegment.transform);
     }
 }
 

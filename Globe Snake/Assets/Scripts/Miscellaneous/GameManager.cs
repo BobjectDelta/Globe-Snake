@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -7,11 +5,10 @@ public class GameManager : MonoBehaviour
     public static GameManager gameManagerInstance = null;
 
     [SerializeField] public GameObject player = null;
-    [SerializeField] private Transform _playerSpawnPoint;
+    [SerializeField] private Vector3 _playerSpawnPoint;
     [SerializeField] private int _scoreGoal = 1000;
     [SerializeField] private float _scorePerTick = 10f;
     [SerializeField] private float _scoreTickInterval = 1000f;
-
 
     private int _currentScore = 0;
     private float _scoreTimer = 0f;
@@ -23,16 +20,17 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (gameManagerInstance == null)
-            gameManagerInstance = this;
-        else
-            DestroyImmediate(this);
+        if (gameManagerInstance == null)       
+            gameManagerInstance = this;      
+        else if (gameManagerInstance != this)        
+            Destroy(gameObject);      
     }
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         _playerMovementController = player.GetComponent<PlayerMovementController>();
+        player.transform.position = _playerSpawnPoint;
 
         Time.timeScale = 1;
 
@@ -42,7 +40,10 @@ public class GameManager : MonoBehaviour
         _uiManager.SetActiveMenuElements(false);
         _uiManager.SetActiveGameElements(true);
         _uiManager.UpdateScoreCounter(_currentScore);
+        _uiManager.UpdateGoalScoreText(_scoreGoal);
         _uiManager.UpdateHealthCounter(player.GetComponent<Health>().GetHealth());
+        _uiManager.UpdateHealthBarMaxValue(player.GetComponent<Health>().GetMaxHealth());
+        _uiManager.UpdateHealthBar(player.GetComponent<Health>().GetHealth());
     }
 
     private void Update()
@@ -63,29 +64,58 @@ public class GameManager : MonoBehaviour
     public void AddScore(int amount)
     {
         _currentScore += amount;
-        //Debug.Log($"Added {amount} score. Total Score: {_currentScore}");
+        if (_uiManager != null)
+            _uiManager.UpdateScoreCounter(_currentScore);
 
-        if (_uiManager)       
-            _uiManager.UpdateScoreCounter(_currentScore); 
-                                                          
         CheckWinCondition();
     }
 
     public void ApplyScoreMultiplier(float multiplier)
     {
-        _bonusScoreMultiplier *= multiplier;
-        Debug.Log($"Bonus score multiplier applied: {multiplier}");
+        Debug.Log($"Score multiplier applied: {multiplier}");
+         _bonusScoreMultiplier *= multiplier;
     }
 
-    public Transform GetPlayerSpawnPoint()
+    public void TriggerGameOver()
     {
+        Time.timeScale = 0;
+        _uiManager.DisplayGameOverUI();
+    }
+
+    public void SetGoalScore(int goalScore)
+    {
+        _scoreGoal = goalScore;
+        Debug.Log($"Game Goal Score set to: {_scoreGoal}");
+        if (_uiManager != null)        
+            _uiManager.UpdateGoalScoreText(goalScore);        
+    }
+
+    public Vector3 GetPlayerSpawnPoint()
+    {
+        if (_playerSpawnPoint == null)
+        {
+            Debug.LogError("Player spawn point is not set in GameManager");
+            return Vector3.zero;
+        }
         return _playerSpawnPoint;
+    }
+
+    public void SetPlayerSpawnPoint(Vector3 spawnPoint)
+    {
+        _playerSpawnPoint = spawnPoint;
+        Debug.Log("Player spawn point set in GameManager");
     }
 
     public void CheckWinCondition()
     {
         if (_currentScore >= _scoreGoal)
             TriggerWin();
+    }
+
+    private void TriggerWin()
+    {
+        Time.timeScale = 0;
+        _uiManager.DisplayWinUI();
     }
 
     public void TogglePause()
@@ -108,17 +138,5 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         _isPaused = false;
         _uiManager.DisplayPauseUI(_isPaused);
-    }
-
-    private void TriggerWin()
-    {
-        Time.timeScale = 0;
-        _uiManager.DisplayWinUI();
-    }
-
-    public void TriggerGameOver()
-    {
-        Time.timeScale = 0;
-        _uiManager.DisplayGameOverUI();
     }
 }

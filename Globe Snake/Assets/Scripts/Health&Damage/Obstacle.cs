@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Obstacle : MonoBehaviour
@@ -7,33 +5,32 @@ public class Obstacle : MonoBehaviour
     [SerializeField] private float _damageAmount = 1f;
     [SerializeField] private bool _shouldTeleportPlayer = false;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider playerCollider)
     {
-        TryDamagePlayer(other);
+        TryDamagePlayer(playerCollider);
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerStay(Collider playerCollider)
     {
-        TryDamagePlayer(other);
+        TryDamagePlayer(playerCollider);
     }
 
-    private void TryDamagePlayer(Collider potentialRecipient)
+    private void TryDamagePlayer(Collider playerCollider)
     {
-        SnakeBodyController playerHeadController = potentialRecipient.GetComponent<SnakeBodyController>();
+        SnakeBodyController snakeController = playerCollider.GetComponent<SnakeBodyController>(); 
 
-        if (playerHeadController != null)
+        if (snakeController != null)
         {
-            Health playerHealth = potentialRecipient.GetComponent<Health>();
+            Health playerHealth = playerCollider.GetComponent<Health>();
 
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(_damageAmount);
-                // Debug.Log($"{gameObject.name} (Obstacle) attempting to damage {potentialRecipient.gameObject.name}.");
-                if (_shouldTeleportPlayer)               
+                if (_shouldTeleportPlayer && playerHealth.GetHealth() > 0)               
                     if (GameManager.gameManagerInstance != null)                   
-                        potentialRecipient.transform.position = GameManager.gameManagerInstance.GetPlayerSpawnPoint().position;
+                        playerCollider.transform.position = GameManager.gameManagerInstance.GetPlayerSpawnPoint();
                     else
-                        Debug.LogWarning("GameManager instance is null. Cannot teleport player.");
+                        Debug.LogWarning("GameManager instance is null, can't teleport player");
             }
         }
     }

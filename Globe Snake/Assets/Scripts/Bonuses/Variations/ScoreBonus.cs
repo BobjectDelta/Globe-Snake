@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : Bonus
+public class ScoreBonus : Bonus
 {
-    [SerializeField] private int _scoreBonus = 10;
+    [SerializeField] private int _scoreBonus = 100;
 
     protected override void GrantBonus(GameObject bonusRecipient)
     {
